@@ -1,0 +1,32 @@
+// 1.Insert a new movie
+db.movies.insertOne({
+    id: 6,
+    title: "Dune",
+    genre: "Sci-Fi",
+    year: 2021,
+    rating: 8.2
+});
+
+// 2.Retrieve all movies
+db.movies.find();
+
+// 3.Retrieve only Sci-Fi movies
+db.movies.find({ genre: "Sci-Fi" });
+
+// 4.Retrieve movies with rating >= 8
+db.movies.find({ rating: { $gte: 8 } });
+
+// 5.Update the rating of movie with id = 3
+db.movies.updateOne(
+    { id: 3 },
+    { $set: { rating: 8.3 } }
+);
+
+// 6.Delete the movie with id = 4
+db.movies.deleteOne({ id: 4 });
+
+// 7.Count total movies
+db.movies.countDocuments();
+
+// 8.Sort movies by rating (descending)
+db.movies.find().sort({ rating: -1 });
